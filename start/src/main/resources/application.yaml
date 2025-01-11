@@ -1,15 +1,13 @@
 spring:
   application:
     name: demo
-  config:
-    use-legacy-processing: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/mydatabase
     username: myuser
     password: secret
     hikari:
-      connection-test-query: select 1
+      jdbc-url: jdbc:postgresql://localhost:5432/mydatabase
   jpa:
     hibernate:
       ddl-auto: update
