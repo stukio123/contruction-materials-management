@@ -1,5 +1,6 @@
 package com.example.resource.query;
 
+import com.example.exception.NotFoundException;
 import com.example.resource.Resource;
 import com.example.resource.ResourceQueryDto;
 import com.example.resource.ResourceQueryService;
@@ -17,7 +18,7 @@ public class ResourceQueryServiceImpl implements ResourceQueryService {
 
     @Override
     public ResourceQueryDto getProductById(Long id) {
-        Resource resource = resourceRepository.findById(id).orElseThrow(() -> new RuntimeException("resource not found"));
+        Resource resource = resourceRepository.findById(id).orElseThrow(() -> new NotFoundException("404", String.format("Resource with id %d not found", id)));
         return ResourceConverter.INSTANCE.toDto(resource);
     }
 
