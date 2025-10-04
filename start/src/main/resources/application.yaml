@@ -1,27 +1,32 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: demo
+    name: c-and-b-project
+
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mydatabase
-    username: myuser
-    password: secret
-    hikari:
-      jdbc-url: jdbc:postgresql://localhost:5432/mydatabase
+    url: jdbc:postgresql://localhost:5432/erp_db
+    username: admin
+    password: admin
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
+  jackson:
+    serialization:
+      write-date-keys-as-timestamps: false
 logging:
   level:
-    org:
-      hibernate:
-        SQL: debug
-        type:
-          descriptor:
-            SQL: trace
-      springframework: INFO
+    root: info
+    org.springframework: info
+    org.hibernate.sql: debug
+    org.hibernate.type.descriptor.sql: trace
 
-server:
-  port: 8090
+

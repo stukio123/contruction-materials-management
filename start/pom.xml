@@ -5,17 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>demo</artifactId>
+        <artifactId>erp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>start</artifactId>
-
-    <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -25,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>app</artifactId>
+            <artifactId>application</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -35,40 +30,21 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>rest</artifactId>
+            <artifactId>api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
+            <!-- Chỉ module bootstrap mới có plugin này -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <excludes>**/application-dev.yaml</excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
         </plugins>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-            <testResource>
-                <directory>src/test/java</directory>
-                <includes>
-                    <include>**/*.sql</include>
-                    <include>**/*.json</include>
-                </includes>
-            </testResource>
-        </testResources>
     </build>
-
 </project>
